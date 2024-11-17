@@ -1,17 +1,21 @@
 import { EmailMessage } from "cloudflare:email";
-import { createMimeMessage } from "mimetext";
+import { createMimeMessage } from "../utils/gas.js";
 
 export function onRequest(context) {
   const url = new URL(context.request.url);
   // console.log("context.params.path", context.params.path);
+
+  if (context.params.path == `bot${context.env.BOT_TOKEN}`) {
+    return bot(context);
+  }
 
   return sendEmail(context, []);
 }
 
 async function sendEmail(context, params) {
   const msg = createMimeMessage();
-  msg.setSender({ name: "test", addr: "sender@apatin.ru" });
-  msg.setRecipient("recepient@apatin.ru");
+  msg.setSender({ name: "test", addr: "photo@workerdev.ru" });
+  msg.setRecipient("photo@apatin.ru");
   msg.setSubject("An email generated in a worker");
   msg.addMessage({
       contentType: 'text/plain',
@@ -19,8 +23,8 @@ async function sendEmail(context, params) {
   });
 
   var message = new EmailMessage(
-    "sender@apatin.ru",
-    "recepient@apatin.ru",
+    "photo@workerdev.ru",
+    "photo@apatin.ru",
     msg.asRaw()
   );
   try {
