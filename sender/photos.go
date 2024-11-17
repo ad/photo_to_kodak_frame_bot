@@ -74,7 +74,7 @@ func (s *Sender) sendEmail(photoPath string) error {
 		return err
 	}
 
-	client := email.NewSender(s.config.SMTP_HOST, email.Port(s.config.SMTP_PORT), email.STARTTLS(true), email.ContentType("text/plain"), email.Auth(s.config.SMTP_USER, s.config.SMTP_PASSWORD))
+	client := email.NewSender(s.config.SMTP_HOST, email.Port(s.config.SMTP_PORT), email.STARTTLS(true), email.ContentType("text/plain"), email.Auth(s.config.SMTP_USER, s.config.SMTP_PASS))
 	err = client.Send("",
 		email.Params{
 			From:        s.config.FromEmail,
