@@ -5,6 +5,7 @@ RUN apk update && apk add --no-cache ca-certificates && update-ca-certificates
 ARG BUILD_VERSION
 
 WORKDIR $GOPATH/src/app
+RUN mkdir /tmp && chmod 1777 /tmp
 COPY go.mod go.mod
 COPY go.sum go.sum
 COPY vendor vendor
@@ -16,7 +17,7 @@ COPY main.go main.go
 RUN CGO_ENABLED=0 go build -mod vendor -ldflags="-w -s -X main.version=${BUILD_VERSION}" -trimpath -o /dist/app
 
 FROM scratch
-RUN mkdir /tmp && chmod 1777 /tmp
+COPY --from=builder /tmp /tmp
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
