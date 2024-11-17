@@ -1,7 +1,0 @@
-name = "photo_to_kodak_frame_bot"
-pages_build_output_dir = "./"
-
-[vars]
-# ADMIN_ID = ""
-# BOT_TOKEN = ""
-# CHATS_ALLOWED = ""
