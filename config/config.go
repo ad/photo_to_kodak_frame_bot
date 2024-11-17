@@ -23,10 +23,10 @@ type Config struct {
 	TargetEmail string `json:"TARGET_EMAIL"`
 	FromEmail   string `json:"FROM_EMAIL"`
 
-	SMTP_HOST     string `json:"SMTP_HOST"`
-	SMTP_PORT     int    `json:"SMTP_PORT"`
-	SMTP_USER     string `json:"SMTP_USER"`
-	SMTP_PASSWORD string `json:"SMTP_PASSWORD"`
+	SMTP_HOST string `json:"SMTP_HOST"`
+	SMTP_PORT int    `json:"SMTP_PORT"`
+	SMTP_USER string `json:"SMTP_USER"`
+	SMTP_PASS string `json:"SMTP_PASS"`
 
 	Debug bool `json:"DEBUG"`
 }
@@ -40,10 +40,10 @@ func InitConfig(args []string) (*Config, error) {
 		TargetEmail: "",
 		FromEmail:   "",
 
-		SMTP_HOST:     "smtp.gmail.com",
-		SMTP_PORT:     587,
-		SMTP_USER:     "",
-		SMTP_PASSWORD: "",
+		SMTP_HOST: "smtp.gmail.com",
+		SMTP_PORT: 587,
+		SMTP_USER: "",
+		SMTP_PASS: "",
 
 		Debug: false,
 	}
@@ -73,7 +73,7 @@ func InitConfig(args []string) (*Config, error) {
 		flags.StringVar(&config.SMTP_HOST, "smtpHost", lookupEnvOrString("SMTP_HOST", config.SMTP_HOST), "SMTP_HOST")
 		flags.IntVar(&config.SMTP_PORT, "smtpPort", lookupEnvOrInt("SMTP_PORT", config.SMTP_PORT), "SMTP_PORT")
 		flags.StringVar(&config.SMTP_USER, "smtpUser", lookupEnvOrString("SMTP_USER", config.SMTP_USER), "SMTP_USER")
-		flags.StringVar(&config.SMTP_PASSWORD, "smtpPassword", lookupEnvOrString("SMTP_PASSWORD", config.SMTP_PASSWORD), "SMTP_PASSWORD")
+		flags.StringVar(&config.SMTP_PASS, "smtpPassword", lookupEnvOrString("SMTP_PASS", config.SMTP_PASS), "SMTP_PASS")
 
 		flags.BoolVar(&config.Debug, "debug", lookupEnvOrBool("DEBUG", config.Debug), "Debug")
 
