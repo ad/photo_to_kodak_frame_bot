@@ -16,11 +16,13 @@ COPY main.go main.go
 RUN CGO_ENABLED=0 go build -mod vendor -ldflags="-w -s -X main.version=${BUILD_VERSION}" -trimpath -o /dist/app
 
 FROM scratch
+RUN mkdir /tmp && chmod 1777 /tmp
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
 COPY --from=builder /dist /
 COPY config.json /config.json
+
 
 ENTRYPOINT ["/app"]
 
