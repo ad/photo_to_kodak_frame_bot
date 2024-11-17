@@ -1,5 +1,8 @@
 name = "photo_to_kodak_frame_bot"
 pages_build_output_dir = "./"
+send_email = [
+    {name = "EMAIL"},
+]
 
 [vars]
 # ADMIN_ID = ""
