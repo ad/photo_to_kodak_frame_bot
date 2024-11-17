@@ -2,12 +2,7 @@ import { EmailMessage } from "cloudflare:email";
 import { createMimeMessage } from "../utils/gas.js";
 
 export function onRequest(context) {
-  const url = new URL(context.request.url);
-  // console.log("context.params.path", context.params.path);
-
-  if (context.params.path == `bot${context.env.BOT_TOKEN}`) {
-    return bot(context);
-  }
+  console.log("context.request", context.request);
 
   return sendEmail(context, []);
 }
