@@ -1,6 +1,6 @@
 module github.com/ad/photo_to_kodak_frame_bot
 
-go 1.22
+go 1.24
 
 require (
 	github.com/go-pkgz/email v0.5.0
