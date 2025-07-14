@@ -4,7 +4,7 @@ go 1.24
 
 require (
 	github.com/go-pkgz/email v0.5.0
-	github.com/go-telegram/bot v1.15.0
+	github.com/go-telegram/bot v1.16.0
 	github.com/google/uuid v1.6.0
 	github.com/joho/godotenv v1.5.1
 )
