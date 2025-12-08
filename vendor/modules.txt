@@ -1,4 +1,4 @@
-# github.com/go-pkgz/email v0.5.0
+# github.com/go-pkgz/email v0.6.0
 ## explicit; go 1.19
 github.com/go-pkgz/email
 # github.com/go-telegram/bot v1.17.0
